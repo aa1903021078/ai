@@ -62,8 +62,8 @@ public class AiConfig {
     public EmbeddingStore store(){
         // 1.加载内存文档,使用读取pdf专用的类读取
         List<Document> documents = ClassPathDocumentLoader.loadDocuments("content",new ApachePdfBoxDocumentParser());
-        // 2.构建向量数据库操作对象(内存存储)
-        //InMemoryEmbeddingStore<TextSegment> store = new InMemoryEmbeddingStore<>();
+        // 2.清空旧的向量数据,避免每次启动重复入库导致检索结果重复
+        redisEmbeddingStore.removeAll();
         // 3.构建分词器
         DocumentSplitter ds = DocumentSplitters.recursive(500, 100);
 

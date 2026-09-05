@@ -116,7 +116,7 @@
                             <div :class="['w-2 h-2 rounded-full', darkMode ? 'bg-gray-400' : 'bg-gray-300', 'animate-pulse delay-200']"></div>
                         </div>
                         <div v-else class="whitespace-pre-wrap">
-                                <span v-for="(char, charIndex) in message.content" :key="charIndex"
+                                <span v-for="(char, charIndex) in message.displayContent" :key="charIndex"
                                       :class="{'opacity-0': charIndex >= message.visibleChars, 'fade-in': charIndex < message.visibleChars}">
                                     {{ char }}
                                 </span>
@@ -181,6 +181,9 @@
             let typingInterval = null;
             let currentTypingIndex = 0;
 
+            // 把 AI 回复中的 <br/> 转为换行，避免以字面文本显示
+            const toDisplay = (text) => Array.from(text.replace(/<br\s*\/?>/gi, '\n'));
+
             // 调整文本区域高度
             const adjustTextareaHeight = () => {
                 const textareaEl = textarea.value;
@@ -213,12 +216,13 @@
                 messages.value.push({
                     role: 'assistant',
                     content: '你好！我是传智教育提供的AI志愿填报顾问，请问有什么能帮到您？',
+                    displayContent: Array.from('你好！我是传智教育提供的AI志愿填报顾问，请问有什么能帮到您？'),
                     isLoading: false,
                     visibleChars: 0,
                     isStreaming: false
                 });
                 // 确保欢迎消息完全可见
-                messages.value[0].visibleChars = messages.value[0].content.length;
+                messages.value[0].visibleChars = messages.value[0].displayContent.length;
                 // 滚动到底部
                 scrollToBottom();
                 // 聚焦输入框
@@ -230,7 +234,7 @@
             // 模拟逐字打印效果
             const startTypingEffect = (messageIndex) => {
                 const message = messages.value[messageIndex];
-                if (!message || message.visibleChars >= message.content.length) {
+                if (!message || message.visibleChars >= message.displayContent.length) {
                     clearInterval(typingInterval);
                     typingInterval = null;
                     messages.value[messageIndex].isStreaming = false;
@@ -254,6 +258,7 @@
                 const userMessage = {
                     role: 'user',
                     content: userInput.value.trim(),
+                    displayContent: Array.from(userInput.value.trim()),
                     isLoading: false,
                     visibleChars: userInput.value.trim().length,
                     isStreaming: false
@@ -264,6 +269,7 @@
                 const assistantMessage = {
                     role: 'assistant',
                     content: '',
+                    displayContent: [],
                     isLoading: true,
                     visibleChars: 0,
                     isStreaming: true
@@ -307,6 +313,7 @@
 
                         // 直接更新内容
                         messages.value[messageIndex].content = buffer;
+                        messages.value[messageIndex].displayContent = toDisplay(buffer);
                         messages.value[messageIndex].isLoading = false;
 
                         // 启动打字效果
@@ -326,6 +333,7 @@
                         console.error('请求出错:', error);
                         const lastMessage = messages.value[messages.value.length - 1];
                         lastMessage.content = '抱歉，请求过程中出现错误: ' + error.message;
+                        lastMessage.displayContent = Array.from(lastMessage.content);
                         lastMessage.visibleChars = lastMessage.content.length;
                     }
                 } finally {
@@ -334,8 +342,8 @@
                     lastMessage.isStreaming = false;
 
                     // 确保所有字符都可见
-                    if (lastMessage.visibleChars < lastMessage.content.length) {
-                        lastMessage.visibleChars = lastMessage.content.length;
+                    if (lastMessage.visibleChars < lastMessage.displayContent.length) {
+                        lastMessage.visibleChars = lastMessage.displayContent.length;
                     }
 
                     isLoading.value = false;
@@ -358,8 +366,8 @@
                     lastMessage.isLoading = false;
                     lastMessage.isStreaming = false;
 
-                    if (lastMessage.visibleChars < lastMessage.content.length) {
-                        lastMessage.visibleChars = lastMessage.content.length;
+                    if (lastMessage.visibleChars < lastMessage.displayContent.length) {
+                        lastMessage.visibleChars = lastMessage.displayContent.length;
                     }
 
                     isLoading.value = false;
@@ -382,13 +390,14 @@
                 messages.value.push({
                     role: 'assistant',
                     content: '你好！我是传智教育提供的AI志愿填报顾问，请问有什么能帮到您？',
+                    displayContent: Array.from('你好！我是传智教育提供的AI志愿填报顾问，请问有什么能帮到您？'),
                     isLoading: false,
                     visibleChars: 0,
                     isStreaming: false
                 });
 
                 // 确保欢迎消息完全可见
-                messages.value[0].visibleChars = messages.value[0].content.length;
+                messages.value[0].visibleChars = messages.value[0].displayContent.length;
                 scrollToBottom();
 
                 // 聚焦输入框

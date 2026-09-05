@@ -14,7 +14,8 @@ import reactor.core.publisher.Flux;
         streamingChatModel = "openAiStreamingChatModel",
 //        chatMemory = "wbwChatMemory"
         chatMemoryProvider = "wbwChatMemoryProvider",
-        contentRetriever = "contentRetriever"
+        contentRetriever = "contentRetriever",
+        tools = "reservationTools"
 )
 public interface ConsultantService {
 

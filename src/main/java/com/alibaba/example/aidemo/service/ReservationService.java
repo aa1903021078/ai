@@ -1,7 +1,7 @@
 package com.alibaba.example.aidemo.service;
 
 import com.alibaba.example.aidemo.entity.Reservation;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 /**
  * 考生预约表 Service
