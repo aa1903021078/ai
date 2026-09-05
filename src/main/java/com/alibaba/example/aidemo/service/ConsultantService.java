@@ -13,7 +13,8 @@ import reactor.core.publisher.Flux;
         wiringMode = AiServiceWiringMode.EXPLICIT,
         streamingChatModel = "openAiStreamingChatModel",
 //        chatMemory = "wbwChatMemory"
-        chatMemoryProvider = "wbwChatMemoryProvider"
+        chatMemoryProvider = "wbwChatMemoryProvider",
+        contentRetriever = "contentRetriever"
 )
 public interface ConsultantService {
 
