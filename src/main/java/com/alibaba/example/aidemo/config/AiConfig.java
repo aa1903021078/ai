@@ -58,7 +58,7 @@ public class AiConfig {
         return chatMemoryProvider;
     }
 
-    @Bean
+    // @Bean
     public EmbeddingStore store(){
         // 1.加载内存文档,使用读取pdf专用的类读取
         List<Document> documents = ClassPathDocumentLoader.loadDocuments("content",new ApachePdfBoxDocumentParser());
