@@ -57,20 +57,7 @@ public class ReservationTools {
     @Tool("根据考生手机号或姓名查询志愿指导服务的预约详情")
     public String queryReservation(@P("考生手机号或姓名") String keyword) {
 
-        List<Reservation> byPhone = reservationService.lambdaQuery()
-                .eq(Reservation::getPhone, keyword)
-                .orderByDesc(Reservation::getId)
-                .list();
-        Reservation reservation = byPhone.isEmpty() ? null : byPhone.get(0);
-
-        if (reservation == null) {
-            List<Reservation> byName = reservationService.lambdaQuery()
-                    .like(Reservation::getName, keyword)
-                    .orderByDesc(Reservation::getId)
-                    .list();
-            reservation = byName.isEmpty() ? null : byName.get(0);
-        }
-
+        Reservation reservation = findReservation(keyword);
         if (reservation == null) {
             return "未查询到相关预约记录";
         }
@@ -81,6 +68,81 @@ public class ReservationTools {
                 + "，沟通时间=" + reservation.getCommunicationTime()
                 + "，省份=" + reservation.getProvince()
                 + "，预估分数=" + reservation.getEstimatedScore();
+    }
+
+    /**
+     * 修改预约信息：仅按手机号精确查找；仅更新考生提供的字段
+     */
+    @Tool("根据考生手机号修改志愿指导服务的预约信息，仅更新考生提供的字段（姓名、性别、手机号、沟通时间、省份、预估分数）")
+    public String modifyReservation(
+            @P("考生手机号，用于查找原预约") String phone,
+            @P("新的考生姓名，不修改则传空") String name,
+            @P("新的考生性别，不修改则传空") String gender,
+            @P("新的考生手机号，不修改则传空") String newPhone,
+            @P("新的预约沟通时间，格式 yyyy-MM-dd HH:mm，不修改则传空") String communicationTime,
+            @P("新的考生所在省份，不修改则传空") String province,
+            @P("新的考生预估分数，不修改则传空") Integer estimatedScore) {
+
+        Reservation reservation = findByPhone(phone);
+        if (reservation == null) {
+            return "未查询到该手机号对应的预约记录，无法修改";
+        }
+
+        if (notBlank(name)) {
+            reservation.setName(name.trim());
+        }
+        if (notBlank(gender)) {
+            reservation.setGender(gender.trim());
+        }
+        if (notBlank(newPhone)) {
+            reservation.setPhone(newPhone.trim());
+        }
+        if (notBlank(communicationTime)) {
+            LocalDateTime time = parseTime(communicationTime);
+            if (time == null) {
+                return "沟通时间格式不正确，请使用 yyyy-MM-dd HH:mm 格式，预约未修改";
+            }
+            reservation.setCommunicationTime(time);
+        }
+        if (notBlank(province)) {
+            reservation.setProvince(province.trim());
+        }
+        if (estimatedScore != null) {
+            reservation.setEstimatedScore(estimatedScore);
+        }
+
+        reservationService.updateById(reservation);
+        return "修改成功，预约ID：" + reservation.getId();
+    }
+
+    /**
+     * 按手机号精确查，查不到再按姓名模糊查
+     */
+    private Reservation findReservation(String keyword) {
+        Reservation reservation = findByPhone(keyword);
+        if (reservation == null) {
+            List<Reservation> byName = reservationService.lambdaQuery()
+                    .like(Reservation::getName, keyword)
+                    .orderByDesc(Reservation::getId)
+                    .list();
+            reservation = byName.isEmpty() ? null : byName.get(0);
+        }
+        return reservation;
+    }
+
+    /**
+     * 仅按手机号精确查找
+     */
+    private Reservation findByPhone(String phone) {
+        List<Reservation> byPhone = reservationService.lambdaQuery()
+                .eq(Reservation::getPhone, phone)
+                .orderByDesc(Reservation::getId)
+                .list();
+        return byPhone.isEmpty() ? null : byPhone.get(0);
+    }
+
+    private boolean notBlank(String value) {
+        return value != null && !value.trim().isEmpty();
     }
 
     private LocalDateTime parseTime(String time) {

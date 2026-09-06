@@ -21,8 +21,8 @@ public class ChatController {
 
     @GetMapping(value = "/chat",produces = "text/html;charset=utf-8")
     public Flux<String> chatAi(
-            @MemoryId String memoryId,
-            @RequestParam @UserMessage String message) {
+            @RequestParam("memoryId") @MemoryId String memoryId,
+            @RequestParam("message") @UserMessage String message) {
         Flux<String> r = consultantService.chat(memoryId,message);
         return r;
     }

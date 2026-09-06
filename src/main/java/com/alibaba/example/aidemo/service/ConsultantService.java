@@ -15,7 +15,7 @@ import reactor.core.publisher.Flux;
 //        chatMemory = "wbwChatMemory"
         chatMemoryProvider = "wbwChatMemoryProvider",
         contentRetriever = "contentRetriever",
-        tools = "reservationTools"
+        tools = {"reservationTools", "timeTools"}
 )
 public interface ConsultantService {
 
