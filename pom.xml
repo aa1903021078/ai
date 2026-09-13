@@ -69,10 +69,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--spring-ai-alibaba dashscope-->
+        <!-- 2.mcp-clent 依赖 -->
         <dependency>
-            <groupId>com.alibaba.cloud.ai</groupId>
-            <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-mcp-client</artifactId>
         </dependency>
 
         <!--会话记忆存储 memory-redis-->
