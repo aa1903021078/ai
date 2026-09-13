@@ -8,7 +8,7 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.prompt.ChatOptions;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -49,7 +49,9 @@ public class SaaLLMConfig
     @Bean(name = "deepseekChatClient")
     public ChatClient deepseekClient(@Qualifier("deepseek") ChatModel chatModel){
         return ChatClient.builder(chatModel)
-                .defaultOptions(ChatOptions.builder().model(DEEPSEEK_MODEL).build())
+                // 必须用 DashScopeChatOptions（实现了 ToolCallingChatOptions），
+                // 否则请求级 .tools(...) 的回调会被丢弃，模型收不到工具
+                .defaultOptions(DashScopeChatOptions.builder().withModel(DEEPSEEK_MODEL).build())
                 .build();
     }
 
@@ -63,8 +65,21 @@ public class SaaLLMConfig
                 .build();
 
         return ChatClient.builder(chatModel)
-                .defaultOptions(ChatOptions.builder().model(QWEN_MODEL).build())
+                // 必须用 DashScopeChatOptions（实现了 ToolCallingChatOptions），
+                // 普通 ChatOptions 会导致 .tools(...) 工具回调丢失、模型不调用工具
+                .defaultOptions(DashScopeChatOptions.builder().withModel(QWEN_MODEL).build())
                 .defaultAdvisors(MessageChatMemoryAdvisor.builder(memory).build())
+                .build();
+    }
+
+
+    /**
+     * 带有MCP的配置
+     */
+    @Bean(name = "qwenChatClientMCP")
+    public ChatClient qwenChatClientMCP(@Qualifier("qwen") ChatModel chatModel, ToolCallbackProvider tools) {
+        return ChatClient.builder(chatModel)
+                .defaultToolCallbacks(tools.getToolCallbacks())  //mcp协议，配置见yml文件
                 .build();
     }
 

@@ -69,6 +69,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--spring-ai-alibaba dashscope-->
+        <dependency>
+            <groupId>com.alibaba.cloud.ai</groupId>
+            <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
+        </dependency>
+
         <!--会话记忆存储 memory-redis-->
         <dependency>
             <groupId>com.alibaba.cloud.ai</groupId>
