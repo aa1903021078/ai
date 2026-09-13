@@ -10,10 +10,16 @@ spring:
   ai:
     dashscope:
       api-key: sk-ws-H.PMPLELM.4SZm.MEQCICrWkumM7FKYq2PGINGBPaoFh3N5HGpkinxO_MG2ZQO7AiBx0QhPBuhs3PDy2wEMOeDZBiInFuUVTM0na2JDDaQgVQ
-      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      base-url: https://dashscope.aliyuncs.com
       chat:
         options:
           model: deepseek-v3
+    vectorstore:
+      redis:
+        initialize-schema: true
+        index-name: custom-index
+        prefix: custom-prefix
+
   data:
     redis:
       host: localhost
