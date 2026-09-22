@@ -1,13 +1,13 @@
-package com.alibaba.example.aidemo;
+package com.alibaba.example.commons;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AiDemoApplication {
+public class CommonsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AiDemoApplication.class, args);
+        SpringApplication.run(CommonsApplication.class, args);
     }
 
 }
