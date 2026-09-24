@@ -28,15 +28,68 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+
+        <!--  SpringAi Alibaba 版本      -->
+        <spring-ai-alibaba.version>1.1.2.0</spring-ai-alibaba.version>
+        <!--  SpringAi Alibaba扩展 的版本     -->
+        <spring-ai-alibaba-extensions.version>1.1.2.1</spring-ai-alibaba-extensions.version>
+
+
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
         <!--    公共模块    -->
+<!--        <dependency>-->
+<!--            <groupId>com.imooc</groupId>-->
+<!--            <artifactId>commons</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>com.imooc</groupId>
-            <artifactId>commons</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>com.alibaba.cloud.ai</groupId>
+            <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud.ai</groupId>
+            <artifactId>spring-ai-alibaba-agent-framework</artifactId>
+        </dependency>
+
+
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--   SpringAi Alibaba 的 bom 版本管理        -->
+            <dependency>
+                <groupId>com.alibaba.cloud.ai</groupId>
+                <artifactId>spring-ai-alibaba-bom</artifactId>
+                <version>${spring-ai-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--   SpringAi Alibaba扩展 的 bom 版本管理        -->
+            <dependency>
+                <groupId>com.alibaba.cloud.ai</groupId>
+                <artifactId>spring-ai-alibaba-extensions-bom</artifactId>
+                <version>${spring-ai-alibaba-extensions.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>3.5.8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
 
 </project>
