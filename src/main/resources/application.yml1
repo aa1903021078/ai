@@ -1,0 +1,41 @@
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      force: true
+      enabled: true
+
+
+spring:
+  ai:
+    dashscope:
+      api-key: sk-ws-H.PMPLELM.4SZm.MEQCICrWkumM7FKYq2PGINGBPaoFh3N5HGpkinxO_MG2ZQO7AiBx0QhPBuhs3PDy2wEMOeDZBiInFuUVTM0na2JDDaQgVQ
+      base-url: https://dashscope.aliyuncs.com
+      chat:
+        options:
+          model: deepseek-v3
+    vectorstore:
+      redis:
+        initialize-schema: true
+        index-name: custom-index
+        prefix: custom-prefix
+
+    mcp:
+        client:
+          type: async
+          request-timeout: 60s
+          toolcallback:
+            enabled: true
+          sse:
+            connections:
+              mcp-server1:   # 多个可以继续配置
+                url: http://localhost:8014
+
+
+  data:
+    redis:
+      host: localhost
+      database: 1
+      port: 6379
+
+
