@@ -20,7 +20,7 @@ import java.util.List;
  * @auther zzyy
  * @create 2025-07-22 0:51
  */
-@Configuration
+//@Configuration
 public class SaaLLMConfig
 {
     @Value("${spring.ai.dashscope.api-key}")

@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 
 import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
 
-@RestController
+//@RestController
 public class TestController {
 
     @Resource(name = "deepseek")
