@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.1.1</version>
+        <version>4.0.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -24,10 +24,9 @@
         <module>tripPlanner_agent</module>
     </modules>
 
+
     <properties>
 
-        <!--  SpringBoot 4      -->
-        <spring-boot.version>4.0.2</spring-boot.version>
         <!--   AgentScope     -->
         <AgentScope.version>1.0.8</AgentScope.version>
         <logback.version>1.5.25</logback.version>
@@ -42,14 +41,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <dependency>
                 <groupId>io.agentscope</groupId>
                 <artifactId>agentscope-a2a-spring-boot-starter</artifactId>
@@ -125,49 +116,5 @@
     </dependencies>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default-compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <annotationProcessorPaths>
-                                <path>
-                                    <groupId>org.projectlombok</groupId>
-                                    <artifactId>lombok</artifactId>
-                                </path>
-                            </annotationProcessorPaths>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>default-testCompile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
-                        <configuration>
-                            <annotationProcessorPaths>
-                                <path>
-                                    <groupId>org.projectlombok</groupId>
-                                    <artifactId>lombok</artifactId>
-                                </path>
-                            </annotationProcessorPaths>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

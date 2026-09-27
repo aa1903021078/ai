@@ -1,6 +1,7 @@
 package com.imooc.commons.utils;
 
-import com.imooc.commons.conf.Properties;
+
+import com.imooc.commons.data.Const;
 import com.imooc.commons.data.ResponseSchema;
 import io.agentscope.core.ReActAgent;
 import io.agentscope.core.agent.AgentBase;
@@ -8,7 +9,6 @@ import io.agentscope.core.agent.Event;
 import io.agentscope.core.agent.StreamOptions;
 import io.agentscope.core.model.DashScopeChatModel;
 import io.agentscope.core.model.ExecutionConfig;
-import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -29,8 +29,6 @@ public class AgentUtils {
     // 从配置中读取敏感资源, 不能使用static
     //=============
 
-
-
     /**
      * author: Imooc
      * description: 创建ReAct Agent Builder
@@ -40,8 +38,6 @@ public class AgentUtils {
      */
     public ReActAgent.Builder getReActAgentBuilder(String name, String description) {
 
-        log.info("Agent使用的大模型:qwen-max ");
-
         return ReActAgent.builder()
                         .name(name)
                         .description(description)
@@ -49,9 +45,9 @@ public class AgentUtils {
                         .model(
                                 DashScopeChatModel.builder()
                                         //请求语言大模型的apikey
-                                        .apiKey("sk-ws-H.PMPLELM.4SZm.MEQCICrWkumM7FKYq2PGINGBPaoFh3N5HGpkinxO_MG2ZQO7AiBx0QhPBuhs3PDy2wEMOeDZBiInFuUVTM0na2JDDaQgVQ")
+                                        .apiKey(Const.KEY_API)
                                         //所使用的语言大模型
-                                        .modelName("qwen-max")
+                                        .modelName(Const.MODEL_NAME)
                                         //是否流式响应
                                         .stream(true)
                                         //开启思考模式

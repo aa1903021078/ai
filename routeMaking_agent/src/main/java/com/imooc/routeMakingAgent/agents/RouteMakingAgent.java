@@ -41,7 +41,7 @@ public class RouteMakingAgent {
                     """
                 )
                 // 添加工具包
-              //  .toolkit(toolkit)
+                .toolkit(toolkit)
                 .build();
 
     }

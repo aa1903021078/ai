@@ -21,8 +21,6 @@ public class PromptUtils {
 
         log.info("====== 构建的Prompt ======");
         log.info(prompt);
-        log.info("============");
-
 
         //Prompt
        return Msg.builder()
