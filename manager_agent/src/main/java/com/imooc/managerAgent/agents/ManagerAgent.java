@@ -11,7 +11,7 @@ import io.agentscope.core.agent.Event;
 import io.agentscope.core.message.ContentBlock;
 import io.agentscope.core.message.TextBlock;
 import io.agentscope.core.model.StructuredOutputReminder;
-import io.agentscope.core.plan.PlanNotebook;
+
 import io.agentscope.core.tool.Toolkit;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;

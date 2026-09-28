@@ -22,6 +22,7 @@
         <module>routeMaking_agent</module>
         <!--行程规划Agent-->
         <module>tripPlanner_agent</module>
+        <module>ceshi</module>
     </modules>
 
 
@@ -76,12 +77,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--   以 SpringBoot 方式添加 A2A 依赖     -->
-        <!--        <dependency>-->
-        <!--            <groupId>io.agentscope</groupId>-->
-        <!--            <artifactId>agentscope-a2a-spring-boot-starter</artifactId>-->
-        <!--            <version>${AgentScope.version}</version>-->
-        <!--        </dependency>-->
 
         <!-- 额外添加 Nacos Spring Boot starter 的依赖 -->
         <dependency>

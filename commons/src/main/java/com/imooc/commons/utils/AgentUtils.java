@@ -7,8 +7,8 @@ import io.agentscope.core.ReActAgent;
 import io.agentscope.core.agent.AgentBase;
 import io.agentscope.core.agent.Event;
 import io.agentscope.core.agent.StreamOptions;
-import io.agentscope.core.model.DashScopeChatModel;
 import io.agentscope.core.model.ExecutionConfig;
+import io.agentscope.extensions.model.dashscope.DashScopeChatModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -41,7 +41,7 @@ public class AgentUtils {
         return ReActAgent.builder()
                         .name(name)
                         .description(description)
-                        //大模型配置
+                //大模型配置
                         .model(
                                 DashScopeChatModel.builder()
                                         //请求语言大模型的apikey
