@@ -1,27 +1,41 @@
 package com.alibaba.example.aidemo.demo;
 
-import dev.langchain4j.model.openai.OpenAiChatModel;
-
-import java.time.Duration;
+import com.alibaba.example.aidemo.utils.Const;
+import io.agentscope.core.agent.RuntimeContext;
+import io.agentscope.core.message.Msg;
+import io.agentscope.extensions.model.dashscope.DashScopeChatModel;
+import io.agentscope.harness.agent.HarnessAgent;
+import io.agentscope.harness.agent.memory.compaction.CompactionConfig;
 
 public class Demo {
     public static void main(String[] args) {
 
-        OpenAiChatModel model = OpenAiChatModel.builder()
-                .baseUrl("http://localhost:11434/v1")
-                .apiKey("ollama")                       // Ollama 不校验，但别留空字符串
-                .modelName("qwen3:0.6b")
-                .temperature(0.7)
-                .timeout(Duration.ofSeconds(120))       // 本地 CPU 推理慢，默认 60s 容易超时
-                .logRequests(true)
-                .logResponses(true)
-                .build();
+        System.out.println(block());
 
-        String chat1 = model.chat("你好，用一句话介绍你自己");
-        System.out.println(chat1);
-
-
-        String chat = model.chat("中国的国土面积是多少");
-        System.out.println(chat);
     }
+
+
+    public static String block(){
+        HarnessAgent agent = HarnessAgent.builder()
+                .model(DashScopeChatModel.builder()
+                        .apiKey(Const.API_KEY)
+                        .modelName("qwen-plus")
+                        .build())
+                .compaction(CompactionConfig.builder()
+                        .triggerMessages(30)
+                        .keepMessages(10)
+                        .build())
+                .build();
+        RuntimeContext context = RuntimeContext.builder()
+                .userId("12")
+                .sessionId("bubu")
+                .build();
+        System.out.println(agent.getDefaultSessionId());
+
+//        Msg msg = agent.call(Msg.builder().textContent("我是00年生的,属性是十二生肖的什么").build()).block();
+        Msg msg = agent.call(Msg.builder().textContent("我今年多大").build(),context).block();
+        return msg.getTextContent();
+
+    }
+
 }
