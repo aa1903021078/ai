@@ -39,7 +39,12 @@ docker network connect wbw mysql    docker network connect wbw mysql 把mysql和
 
 
 
+## DockerCompose
+DockerCompose 用于把一个应用相关的镜像部署的配置放在一个文件里面, 这样运行这个文件就可以把应用相关的前端后端中间件一起启动
 
+使用 docker compose up -d 启动应用, docker compose down 停止应用, docker compose ps 查看应用的状态
+
+![3.png](img/3.png)
 
 
 
