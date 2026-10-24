@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootTest
-public class Test {
+public class Test {//
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
