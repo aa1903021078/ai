@@ -1,0 +1,42 @@
+15:02:16.096 [nacos-grpc-client-executor-192.168.200.130-191] ERROR c.a.n.c.r.c.g.GrpcClient - [printIfErrorEnabled,102] - [1740034043029_192.168.200.1_51050]Request stream error, switch server,error={}
+com.alibaba.nacos.shaded.io.grpc.StatusRuntimeException: CANCELLED: RST_STREAM closed stream. HTTP/2 error code: CANCEL
+	at com.alibaba.nacos.shaded.io.grpc.Status.asRuntimeException(Status.java:539)
+	at com.alibaba.nacos.shaded.io.grpc.stub.ClientCalls$StreamObserverToCallListenerAdapter.onClose(ClientCalls.java:487)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl.closeObserver(ClientCallImpl.java:563)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl.access$300(ClientCallImpl.java:70)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1StreamClosed.runInternal(ClientCallImpl.java:744)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1StreamClosed.runInContext(ClientCallImpl.java:723)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at com.alibaba.nacos.shaded.io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+15:02:16.304 [nacos-grpc-client-executor-192.168.200.130-199] ERROR c.a.n.c.r.c.g.GrpcClient - [printIfErrorEnabled,102] - [1740034031983_192.168.200.1_51034]Request stream error, switch server,error={}
+com.alibaba.nacos.shaded.io.grpc.StatusRuntimeException: CANCELLED: RST_STREAM closed stream. HTTP/2 error code: CANCEL
+	at com.alibaba.nacos.shaded.io.grpc.Status.asRuntimeException(Status.java:539)
+	at com.alibaba.nacos.shaded.io.grpc.stub.ClientCalls$StreamObserverToCallListenerAdapter.onClose(ClientCalls.java:487)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl.closeObserver(ClientCallImpl.java:563)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl.access$300(ClientCallImpl.java:70)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1StreamClosed.runInternal(ClientCallImpl.java:744)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1StreamClosed.runInContext(ClientCallImpl.java:723)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at com.alibaba.nacos.shaded.io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+15:02:17.071 [com.alibaba.nacos.client.Worker] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigBatchListenRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=2c1217d9863510c4ddfa58d90c24d7cd, Client-RequestTS=1740034936963, exConfigInfo=true}, requestId='null'}, retryTimes = 0, errorMessage = Client not connected, current status:UNHEALTHY
+15:02:17.178 [com.alibaba.nacos.client.Worker] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigBatchListenRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=2c1217d9863510c4ddfa58d90c24d7cd, Client-RequestTS=1740034936963, exConfigInfo=true}, requestId='null'}, retryTimes = 1, errorMessage = Client not connected, current status:UNHEALTHY
+15:02:17.286 [com.alibaba.nacos.client.Worker] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigBatchListenRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=2c1217d9863510c4ddfa58d90c24d7cd, Client-RequestTS=1740034936963, exConfigInfo=true}, requestId='null'}, retryTimes = 2, errorMessage = Client not connected, current status:UNHEALTHY
+15:02:17.287 [com.alibaba.nacos.client.Worker] ERROR c.a.n.c.c.i.ClientWorker - [executeConfigListen,829] - Async listen config change error 
+com.alibaba.nacos.api.exception.NacosException: Client not connected, current status:UNHEALTHY
+	at com.alibaba.nacos.common.remote.client.RpcClient.request(RpcClient.java:643)
+	at com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient.requestProxy(ClientWorker.java:1011)
+	at com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient.requestProxy(ClientWorker.java:992)
+	at com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient.executeConfigListen(ClientWorker.java:786)
+	at com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient.lambda$startInternal$2(ClientWorker.java:704)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)

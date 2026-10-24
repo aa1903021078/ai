@@ -1,0 +1,39 @@
+14:46:25.024 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Connection is unregistered, switch server, connectionId = 1740033982605_192.168.200.1_50917, request = ConfigQueryRequest
+14:46:25.134 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigQueryRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=d4f0f04992cf24ecbf59c827e158fe40, Client-RequestTS=1740033984826, exConfigInfo=true, notify=false}, requestId='null'}, retryTimes = 0, errorMessage = Connection is unregistered.
+14:46:25.244 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigQueryRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=d4f0f04992cf24ecbf59c827e158fe40, Client-RequestTS=1740033984826, exConfigInfo=true, notify=false}, requestId='null'}, retryTimes = 1, errorMessage = Client not connected, current status:UNHEALTHY
+15:02:16.127 [nacos-grpc-client-executor-192.168.200.130-222] ERROR c.a.n.c.r.c.g.GrpcClient - [printIfErrorEnabled,102] - [1740033983235_192.168.200.1_50919]Request stream error, switch server,error={}
+com.alibaba.nacos.shaded.io.grpc.StatusRuntimeException: CANCELLED: RST_STREAM closed stream. HTTP/2 error code: CANCEL
+	at com.alibaba.nacos.shaded.io.grpc.Status.asRuntimeException(Status.java:539)
+	at com.alibaba.nacos.shaded.io.grpc.stub.ClientCalls$StreamObserverToCallListenerAdapter.onClose(ClientCalls.java:487)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl.closeObserver(ClientCallImpl.java:563)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl.access$300(ClientCallImpl.java:70)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1StreamClosed.runInternal(ClientCallImpl.java:744)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1StreamClosed.runInContext(ClientCallImpl.java:723)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at com.alibaba.nacos.shaded.io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+15:02:16.365 [nacos-grpc-client-executor-192.168.200.130-200] ERROR c.a.n.c.r.c.g.GrpcClient - [printIfErrorEnabled,102] - [1740034000536_192.168.200.1_50968]Request stream error, switch server,error={}
+com.alibaba.nacos.shaded.io.grpc.StatusRuntimeException: CANCELLED: RST_STREAM closed stream. HTTP/2 error code: CANCEL
+	at com.alibaba.nacos.shaded.io.grpc.Status.asRuntimeException(Status.java:539)
+	at com.alibaba.nacos.shaded.io.grpc.stub.ClientCalls$StreamObserverToCallListenerAdapter.onClose(ClientCalls.java:487)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl.closeObserver(ClientCallImpl.java:563)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl.access$300(ClientCallImpl.java:70)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1StreamClosed.runInternal(ClientCallImpl.java:744)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1StreamClosed.runInContext(ClientCallImpl.java:723)
+	at com.alibaba.nacos.shaded.io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at com.alibaba.nacos.shaded.io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+15:02:17.916 [SpringApplicationShutdownHook] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = InstanceRequest{headers={app=unknown}, requestId='null'}, retryTimes = 0, errorMessage = Client not connected, current status:UNHEALTHY
+15:02:18.025 [SpringApplicationShutdownHook] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = InstanceRequest{headers={app=unknown}, requestId='null'}, retryTimes = 1, errorMessage = Client not connected, current status:UNHEALTHY
+20:43:01.971 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Connection is unregistered, switch server, connectionId = 1740055380925_192.168.200.1_54561, request = ConfigQueryRequest
+20:43:02.074 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigQueryRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=ca6f3848ec2f28575180b988a6c16877, Client-RequestTS=1740055381652, exConfigInfo=true, notify=false}, requestId='null'}, retryTimes = 0, errorMessage = Connection is unregistered.
+20:43:02.182 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigQueryRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=ca6f3848ec2f28575180b988a6c16877, Client-RequestTS=1740055381652, exConfigInfo=true, notify=false}, requestId='null'}, retryTimes = 1, errorMessage = Client not connected, current status:UNHEALTHY
+20:43:02.289 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigQueryRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=ca6f3848ec2f28575180b988a6c16877, Client-RequestTS=1740055381652, exConfigInfo=true, notify=false}, requestId='null'}, retryTimes = 2, errorMessage = Client not connected, current status:UNHEALTHY
+20:43:02.398 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigQueryRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=5d5a62e756a027e012d05003255108b3, Client-RequestTS=1740055382295, exConfigInfo=true, notify=false}, requestId='null'}, retryTimes = 0, errorMessage = Client not connected, current status:UNHEALTHY
+20:43:02.508 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigQueryRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=5d5a62e756a027e012d05003255108b3, Client-RequestTS=1740055382295, exConfigInfo=true, notify=false}, requestId='null'}, retryTimes = 1, errorMessage = Client not connected, current status:UNHEALTHY
+20:43:02.619 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigQueryRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=5d5a62e756a027e012d05003255108b3, Client-RequestTS=1740055382295, exConfigInfo=true, notify=false}, requestId='null'}, retryTimes = 2, errorMessage = Client not connected, current status:UNHEALTHY
+20:43:02.731 [main] ERROR c.a.n.c.r.client - [printIfErrorEnabled,102] - Send request fail, request = ConfigQueryRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=536b6bedd2bc06a1e07550e4f4cb939c, Client-RequestTS=1740055382623, exConfigInfo=true, notify=false}, requestId='null'}, retryTimes = 0, errorMessage = Client not connected, current status:UNHEALTHY

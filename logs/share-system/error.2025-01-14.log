@@ -1,0 +1,1 @@
+12:05:28.642 [http-nio-9201-exec-1] ERROR c.s.c.s.h.GlobalExceptionHandler - [handleNotPermissionException,39] - 请求地址'/user/list',权限码校验失败'system:user:list'
